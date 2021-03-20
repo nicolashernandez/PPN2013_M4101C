@@ -179,9 +179,9 @@ Avec les privilèges root ouvrir le fichier /etc/phpldapadmin/config.php
 
     nano /etc/phpldapadmin/config.php
 
-Changer la valeur surlignée pour référencer votre serveur avec le nom du domaine ou adresse IP. Ici, dans le cadre de ce TP, on vous conseille fortement de mettre 127.0.0.1. Si vous choisissez un nom de domaine alors il faudra pouvoir résoudre les noms de domaines (avec un DNS ou au moins avec le fichier /etc/hosts). Limitez l'imprévisible.
+Changer la valeur `DOMAIN_NAME_or_IP_ADDRESS` pour référencer votre serveur avec le nom du domaine ou adresse IP. Ici, dans le cadre de ce TP, on vous conseille fortement de mettre 127.0.0.1. Si vous choisissez un nom de domaine alors il faudra pouvoir résoudre les noms de domaines (avec un DNS ou au moins avec le fichier /etc/hosts). Limitez l'imprévisible.
     
-    $servers->setValue('server','host','domain_name_or_IP_address');
+    $servers->setValue('server','host','DOMAIN_NAME_or_IP_ADDRESS');
 
 La suite requiert de refléter votre configuration du démon slapd.
 Ici spécifier votre DNS domain name en format ldif. Pour cela utiliser l'attribut "dc" signifiant "domain component name". "testID.com" devient "dc=testID,dc=com". Attention la String "ID" est à changer par votre identifiant machine !!!
