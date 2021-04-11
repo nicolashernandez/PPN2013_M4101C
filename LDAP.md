@@ -179,9 +179,9 @@ Avec les privilèges root ouvrir le fichier /etc/phpldapadmin/config.php
 
     nano /etc/phpldapadmin/config.php
 
-Changer la valeur surlignée pour référencer votre serveur avec le nom du domaine ou adresse IP. Ici, dans le cadre de ce TP, on vous conseille fortement de mettre 127.0.0.1. Si vous choisissez un nom de domaine alors il faudra pouvoir résoudre les noms de domaines (avec un DNS ou au moins avec le fichier /etc/hosts). Limitez l'imprévisible.
+Changer la valeur `DOMAIN_NAME_or_IP_ADDRESS` pour référencer votre serveur avec le nom du domaine ou adresse IP. Ici, dans le cadre de ce TP, on vous conseille fortement de mettre 127.0.0.1. Si vous choisissez un nom de domaine alors il faudra pouvoir résoudre les noms de domaines (avec un DNS ou au moins avec le fichier /etc/hosts). Limitez l'imprévisible.
     
-    $servers->setValue('server','host','domain_name_or_IP_address');
+    $servers->setValue('server','host','DOMAIN_NAME_or_IP_ADDRESS');
 
 La suite requiert de refléter votre configuration du démon slapd.
 Ici spécifier votre DNS domain name en format ldif. Pour cela utiliser l'attribut "dc" signifiant "domain component name". "testID.com" devient "dc=testID,dc=com". Attention la String "ID" est à changer par votre identifiant machine !!!
@@ -252,9 +252,7 @@ Nous allons créer deux types de groupes avec des privilèges distincts : `admin
 - Choisir "Générique : Groupe Posix". Les comptes POSIX sont le système d'authentification utilisés par LINUX.
 - Créer le groupe "`administrateur`"
 
-Reproduire la manipulation pour créer le groupe posix générique "`utilisateur`" comme sous entrée à l'unité `groupes`.
-
-#### 4.2.1 Si lorsque vous cliquer dans la division de gauche sur une unité organisationnelle créée, vous obtenez l'affichage suivant
+Si lorsque vous cliquer dans la division de gauche sur une unité organisationnelle créée, vous obtenez l'affichage suivant
 
     Sélectionner un modèle pour le processus de création
     Modèles:        
@@ -263,6 +261,8 @@ Reproduire la manipulation pour créer le groupe posix générique "`utilisateur
      [ ] Valeur par défaut
 
 Alors sélectionnez "Valeur par défaut" !
+
+Reproduire la manipulation pour créer le groupe posix générique "`utilisateur`" comme sous entrée à l'unité `groupes`.
 
 #### 4.2.2 !!! **Troubleshooting** !!! **Aucun GID  indiqué et champnon éditable**
 Suivant les versions, le GID (Group ID) est initialisé et incrémenté automatiquement.
@@ -472,9 +472,9 @@ Par exemple
 
     ssh inogoud@localhost
 
-Une fois connectée vérifier qui vous êtes avec la commande whoami.
+Cela ne marche et c'est normal... Il manque un truc. Mais cela va vous permettre d'apprendre à lire des logs... cf. paragraphes ci-après. 
+Quand vous aurez résolu votre problème et que la commande ssh fonctionnera, taper la commande `whoami` pour bien vérifier que vous êtes bien qui vous croyez être.
 
-Cela ne marche et c'est normal... Il manque un truc. Mais cela va vous permettre d'apprendre à lire des logs....
 
 ### 5.6.1 consulter les journaux de ssh
 
@@ -498,7 +498,7 @@ ou bien
 
 Et peut être aussi le même genre de chose sur le serveur...
 
-#### 5.6.2 !!! Troubleshooting !!! Invalid user/Invalid credentials
+#### 5.6.2 !!! Troubleshooting !!! **Invalid user/Invalid credentials**
 
 Si vous constatez l'erreur « Invalid user/Invalid credentials » ici visible avec la commande « journalctl -u ssh »
 
@@ -550,7 +550,7 @@ Si la manipulation ci-avant n'a pas fonctionné, vérifiez la configuration de /
 
     systemctl restart nscd.service
 
-#### 5.6.3   !!! Troubleshooting !!! Can't contact LDAP server
+#### 5.6.3   !!! Troubleshooting !!! **Can't contact LDAP server**
 
 Si sur le client vous observez
 
