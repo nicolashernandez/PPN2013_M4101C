@@ -25,6 +25,6 @@
 
 * accepter l'exception dans le navigateur pour valider le serveur au lieu de chercher à bien vérifier que le serveur est correctement configuré puis que le navigateur importe bien le certificat qui va bien
 
-* 2020-2021 Certains navigateurs lèvent une alerte signalant la présence d'un certificat auto-signé...
+* 2020-2021  Si vous observer le message d'erreur suivant sous firefox, `MOZILLA_PKIX_ERROR_SELF_SIGNED_CERT` ou `NET::ERR_CERT_AUTHORITY_INVALID` sous Google Chrome alors cela signifie que vous consultez un site où le certificat est auto-signé. "_Un certificat auto-signé qui n’a pas été émis par une autorité de certification (telle que DigiCert or Sectigo) est considéré comme non fiable par défaut. Les certificats auto-signés peuvent sécuriser vos données par rapport aux oreilles indiscrètes, mais ne disent rien sur les destinataires des données que vous communiquez. C’est courant pour les sites web en intranet qui ne sont pas disponibles publiquement et vous pouvez ignorer l’avertissement pour de tels sites._" https://support.mozilla.org/fr/kb/comment-regler-codes-erreur-securite-sur-sites-securises?redirectslug=que-faire-devant-erreur-sec_error_unknown_issuer&redirectlocale=fr
 
 * Si votre navigateur n'arrive jamais sur `/var/www/html2` et que vous avez bien fait un a2ensite (enabled) sur votre conf dans apache alors faire un a2dissite sur le conf par défaut.
