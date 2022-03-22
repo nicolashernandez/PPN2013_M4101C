@@ -66,6 +66,7 @@ Une série de questions peuvent vous être posées (cf. ci-dessous). En généra
 
     # passer root 
     sudo su
+    # apt-get update --allow-releaseinfo-change # en salle réseau iutna en 2021/2022
     apt-get update
     apt-get install slapd
 
@@ -171,9 +172,17 @@ Ci-dessous nous allons utiliser le client web phpldapadmin.
 
 Celui-ci va servir à la création effective de l'annuaire et de son contenu.
 
-Installer le client web phpldapadmin
+Dans debian 10 et debian 11, le package phpldapadmin n'est plus disponible (`apt-get install phpldapadmin` ne fonctionnera plus pour installer simplement le paquet). Désormais il faut télécharger _à la mano_ la version la plus récente de phplpdapamin. Pour cela rendez vous sur http://ftp.de.debian.org/debian/pool/main/p/phpldapadmin/. En 2021/22 il s'agit de `phpldapadmin_1.2.6.3-0.2_all.deb`.
+Puis faire (depuis le répertoire de téléchargement)
+    
+    sudo su
+    apt-get update --allow-releaseinfo-change
+    dpkg -i phpldapadmin_1.2.6.3-0.2_all.deb
 
-    apt-get install phpldapadmin
+si vous rencontrez des problèmes vous pouvez jouer avec les commandes suivantes
+    
+    apt-get install php-ldap php-xml php
+    apt --fix-broken install
 
 Avec les privilèges root ouvrir le fichier /etc/phpldapadmin/config.php
 
@@ -196,6 +205,10 @@ Et finalement décommenter la ligne suivante et la mettre à "true pour éviter 
     $config->custom->appearance['hide_template_warning'] = true;
 
 Sauver et fermer le fichier.
+
+phpldapadmin requiert que vous (re)démarriez apache2 pour fonctionner
+
+   systemctl restart apache2
 
 Désormais vous pouvez vous connecter via votre navigateur à l'adresse suivante
 
