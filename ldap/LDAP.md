@@ -265,6 +265,8 @@ Nous allons créer deux types de groupes avec des privilèges distincts : `admin
 - Choisir "Générique : Groupe Posix". Les comptes POSIX sont le système d'authentification utilisés par LINUX.
 - Créer le groupe "`administrateur`"
 
+Reproduire la manipulation pour créer le groupe posix générique "`utilisateur`" comme sous entrée à l'unité `groupes`.
+
 #### 4.2.1 !!! **Troubleshooting** !!! ** 
 
 **Si** lorsque vous cliquez dans la division de gauche sur une unité organisationnelle créée, vous obtenez l'affichage suivant
@@ -279,7 +281,6 @@ Nous allons créer deux types de groupes avec des privilèges distincts : `admin
 
 **Sinon** ne rien faire...
 
-Reproduire la manipulation pour créer le groupe posix générique "`utilisateur`" comme sous entrée à l'unité `groupes`.
 
 #### 4.2.2 !!! **Troubleshooting** !!! **Aucun GID  indiqué et champnon éditable**
 Suivant les versions, le GID (Group ID) est initialisé et incrémenté automatiquement.
