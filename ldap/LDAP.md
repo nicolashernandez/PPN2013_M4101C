@@ -161,11 +161,14 @@ Vous devriez avoir un premier résultat. Ci-dessous un rendu avec un annuaire co
     # numResponses: 3
     # numEntries: 2
 
+Si le ldapsearch initial ne donne donc aucun résultat, tentez un "restart" du service slapd.
+
 Vous pouvez aussi jeter un oeil sur l'annuaire de votre collègue (donner le bon testID et n'oubliez pas de configurer l'IP de vos machines respectives...).
       
       ldapsearch -x -L -H ldap://IP_SERVER_DISTANT -b "dc=testID,dc=com"
 
 Vous devriez voir quelque chose de similaire à ce que vous avez vu chez vous. 
+
 Ci-dessous nous allons utiliser le client web phpldapadmin. 
 
 ### 3.3 Installation et configuration du client phpldapadmin
